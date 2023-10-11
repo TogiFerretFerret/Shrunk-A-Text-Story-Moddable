@@ -1,0 +1,1 @@
+./upd2.sh & (poetry update ; echo update finished ; pkill bash)
