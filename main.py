@@ -9,7 +9,7 @@ import termios
 import tty
 from gutils import printt
 from gutils.auth import accountCheck
-from gutils.dbtools import registerData
+from gutils.dbtools import registerData, jread
 # Test variables
 storyLocation = 0
 hasAccount = 0
@@ -22,12 +22,12 @@ db.db_url = "https://Shrunk-Database.tg101.repl.co"  # type: ignore
 os.environ["REPL_DB_URL"] = "https://Shrunk-Database.tg101.repl.co"
 # Next line is so one user's data doesn't overwrite everyone else's
 username = os.environ["REPL_OWNER"]
-printt(eval(testing_message), userStrDelay)
+
 def sparrowEncounterTwo():
     global userStrDelay, numDeaths, storyLocation
     os.system("clear")
     printt(
-        f"As you turn to the front steps, a shudder rolls down your back....\n{fore(3)}{style(3)} HOW would you climb UP the steps? You know how to get down the steps, but up the steps?.... IMPOSSIBRU!\n{style(0)}", userStrDelay)
+        , userStrDelay)
     time.sleep(0.5)
     printt(
         f"Could you do the opposite? Jump up and hoist yourself up the front steps? Probably...\n\nYou do not notice a mysterious shadow towering over you as you try to think.{fore(1)}{style(3)} Suddenly, you're knocked over by something! What was that?-- Like a flap of wind...\n\n{style(0)} Landing on both elbows and knees, you finally see that shadow's bigger. Wondering what's behind you, you wheel around and gasp!--\n\n", userStrDelay)

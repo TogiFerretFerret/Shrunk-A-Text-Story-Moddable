@@ -7,7 +7,7 @@ import fkeycapture as fkey  # Better menus 😀
 import sys
 import termios
 import tty
-
+import json
 # Data register function
 def registerData():
     global storyLocation, numDeaths, bestFriend, userStrDelay, username
@@ -21,3 +21,7 @@ def registerData():
     db["numDeaths" + username] = numDeaths  # type: ignore
     db["bestFriend" + username] = bestFriend  # type: ignore
     db["userStrDelay" + username] = userStrDelay  # type: ignore
+
+# JRead reads story for one scene
+def jread(sc):
+  with open(sc, "r") as f:
