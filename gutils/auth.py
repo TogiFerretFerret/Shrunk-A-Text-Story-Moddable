@@ -8,7 +8,8 @@ import sys
 import termios
 import tty
 
-
+# Replit Auth
+# TODO: Make it yknow, actually somewhat not terrible...
 def accountCheck():
     # Check if the user has a Replit account
     global hasAccount

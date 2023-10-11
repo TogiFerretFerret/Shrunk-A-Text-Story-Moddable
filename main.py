@@ -8,6 +8,8 @@ import sys
 import termios
 import tty
 from gutils import printt
+from gutils.auth import accountCheck
+from gutils.dbtools import registerData
 # Test variables
 storyLocation = 0
 hasAccount = 0
@@ -20,15 +22,7 @@ db.db_url = "https://Shrunk-Database.tg101.repl.co"  # type: ignore
 os.environ["REPL_DB_URL"] = "https://Shrunk-Database.tg101.repl.co"
 # Next line is so one user's data doesn't overwrite everyone else's
 username = os.environ["REPL_OWNER"]
-
-
-
-
-
-
-
-
-
+printt(eval(testing_message), userStrDelay)
 def sparrowEncounterTwo():
     global userStrDelay, numDeaths, storyLocation
     os.system("clear")
