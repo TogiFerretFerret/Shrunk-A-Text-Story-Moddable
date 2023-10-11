@@ -24,4 +24,8 @@ def registerData():
 
 # JRead reads story for one scene
 def jread(sc):
-  with open(sc, "r") as f:
+  with open("./storydb/storyline.json", "r") as f:
+    jlv = json.load(f)
+    if sc not in jlv.keys():
+      raise Exception("Scene not found!")
+    return jlv[sc]

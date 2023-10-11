@@ -7,15 +7,23 @@ import fkeycapture as fkey  # Better menus 😀
 import sys
 import termios
 import tty
-
+# SetHasaccount in the name lol
+def setHasAccount(val):
+  with open("./cfg/ha.txt","wt") as ha:
+    ha.write(str(val))
+    ha.close()
+# getHasAccount
+def getHasAccount():
+  with open("./cfg/ha.txt","r") as ha:
+    return int(ha.read())
+# SetUsername
 # Replit Auth
 # TODO: Make it yknow, actually somewhat not terrible...
 def accountCheck():
     # Check if the user has a Replit account
-    global hasAccount
     print("Do you have a Replit account? (y/n)")
     account = fkey.getchars(chars=["y", "n"])
     if account == "y":
-        hasAccount = 1
+        setHasAccount(1)
     else:
-        hasAccount = 0
+        setHasAccount(0)

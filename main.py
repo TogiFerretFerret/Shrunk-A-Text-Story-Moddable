@@ -8,11 +8,12 @@ import sys
 import termios
 import tty
 from gutils import printt
-from gutils.auth import accountCheck
+from gutils.auth import accountCheck, getHasAccount, setHasAccount
 from gutils.dbtools import registerData, jread
+import cfg
 # Test variables
 storyLocation = 0
-hasAccount = 0
+setHasAccount(0)
 # The main function for simulating typing
 userStrDelay = 0.04
 numDeaths = 0
@@ -22,12 +23,11 @@ db.db_url = "https://Shrunk-Database.tg101.repl.co"  # type: ignore
 os.environ["REPL_DB_URL"] = "https://Shrunk-Database.tg101.repl.co"
 # Next line is so one user's data doesn't overwrite everyone else's
 username = os.environ["REPL_OWNER"]
-
 def sparrowEncounterTwo():
     global userStrDelay, numDeaths, storyLocation
     os.system("clear")
-    printt(
-        , userStrDelay)
+    jrv = jread('sparrowEncounter2')
+    printt(eval(f'f"""{jrv[0]}"""'), userStrDelay)
     time.sleep(0.5)
     printt(
         f"Could you do the opposite? Jump up and hoist yourself up the front steps? Probably...\n\nYou do not notice a mysterious shadow towering over you as you try to think.{fore(1)}{style(3)} Suddenly, you're knocked over by something! What was that?-- Like a flap of wind...\n\n{style(0)} Landing on both elbows and knees, you finally see that shadow's bigger. Wondering what's behind you, you wheel around and gasp!--\n\n", userStrDelay)
@@ -843,9 +843,9 @@ def playAgain():
 
 
 def saveGame():
-    global user, hasAccount, username, storyLocation, numDeaths, bestFriend, userStrDelay
+    global user, username, storyLocation, numDeaths, bestFriend, userStrDelay
 
-    if hasAccount == 1:
+    if getHasAccount() == 1:
         db["storyLocation" + username] = storyLocation  # type: ignore
         db["numDeaths" + username] = numDeaths  # type: ignore
         db["bestFriend" + username] = bestFriend  # type: ignore
@@ -881,8 +881,8 @@ def saveGame():
 
 
 def loadGame():
-    global user, hasAccount, username, storyLocation, numDeaths, bestFriend, userStrDelay
-    if hasAccount == 1:
+    global user, username, storyLocation, numDeaths, bestFriend, userStrDelay
+    if getHasAccount() == 1:
         try:
             storyLocation = db["storyLocation" + username]  # type: ignore
             numDeaths = db["numDeaths" + username]  # type: ignore
@@ -1161,7 +1161,7 @@ def loadGame():
 
 def register():
     global storyLocation, numDeaths, bestFriend, userStrDelay, user
-
+    print("y")
     print(
         "You may choose a name to create a save file under. You must remember it later on."
     )
@@ -7419,7 +7419,6 @@ def game():
 
 
 def subMenu():
-    global hasAccount
     os.system("clear")
     printt("1. New Game", userStrDelay)
     printt("2. Load Game", userStrDelay)
@@ -7427,8 +7426,8 @@ def subMenu():
     gameLoad = int(fkey.getchars(chars=["1", "2", "3"]))
     if gameLoad == 1:
         os.system("clear")
-        accountCheck()
-        if hasAccount == 1:
+        accountCheck() # Not passing this line?
+        if getHasAccount() == 1:
             registerData()
         else:
             register()
