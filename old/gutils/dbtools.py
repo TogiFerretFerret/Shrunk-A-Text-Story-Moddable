@@ -23,8 +23,10 @@ def registerData():
     db["userStrDelay" + username] = userStrDelay  # type: ignore
 
 # JRead reads story for one scene
-def jread(sc):
-  with open("./storydb/storyline.json", "r") as f:
+def jread(sc,spath):
+  if not os.path.exists(f'./storydb/{spath}'):
+    raise Exception("File not found!")
+  with open(f"./storydb/{spath}", "r") as f:
     jlv = json.load(f)
     if sc not in jlv.keys():
       raise Exception("Scene not found!")
