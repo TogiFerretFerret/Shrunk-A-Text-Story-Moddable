@@ -7,3 +7,7 @@ class DefaultMod:
   def titleShown(self):
     """Title Shown Hook"""
     pass
+  @hookspec
+  def menuChoice(self,choice):
+    """Menu Choice"""
+    pass

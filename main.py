@@ -3,7 +3,7 @@ import forge.mod
 import pluggy
 from replit import db
 from colored import fore, style
-import fkeycapture as fkey  # Better menus 😀
+import engine.interactions.directkey as dk  # Better menus 😀
 import sys
 import termios
 import tty
@@ -60,7 +60,8 @@ def mainMenu():
   while True:
       try:
           print("Would you like to start your adventure or quit?\n")
-          choice = int(fkey.getchars(chars=["1", "2", "3"]))
+          choice = int(dk.dKey(["1", "2", "3"]))
+          pm.hook.menuChoice(choice=choice)
           if choice == 1:
               subMenu()
               break
