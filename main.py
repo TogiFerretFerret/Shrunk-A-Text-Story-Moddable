@@ -9,6 +9,9 @@ import termios
 import tty
 from pyfiglet import Figlet
 import time
+import engine.story.disclaimer
+from engine.story.typewriter import printt
+import engine.fsys.read
 
 pm = pluggy.PluginManager("shrunk")
 pm.add_hookspecs(forge.mod.DefaultMod)
@@ -39,17 +42,43 @@ db.db_url = "https://Shrunk-Database.tg101.repl.co"  # type: ignore
 os.environ["REPL_DB_URL"] = "https://Shrunk-Database.tg101.repl.co"
 # Next line is so one user's data doesn't overwrite everyone else's
 username = os.environ["REPL_OWNER"]
+
+def mainMenu():
+  global userStrDelay, numDeaths, bestFriend, storyLocation
+  printt(fore(14) + "TG 101 presents...\n\n\n" + style(0), userStrDelay)
+  time.sleep(1)
+  # Print Title
+  reader = engine.fsys.read.FileReader()
+  print(reader.read("data/titleText.txt"))
+  pm.hook.titleShown()
+  time.sleep(0.5)
+  printt("\n Welcome to this game...\n\n", userStrDelay)
+  time.sleep(0.5)
+  printt("1. Start", userStrDelay)
+  printt("2. Options", userStrDelay)
+  printt("3. Exit", userStrDelay)
+  while True:
+      try:
+          print("Would you like to start your adventure or quit?\n")
+          choice = int(fkey.getchars(chars=["1", "2", "3"]))
+          if choice == 1:
+              subMenu()
+              break
+          elif choice == 3:
+              printt("Goodbye!", userStrDelay)
+              quit(0)
+          elif choice == 2:
+              options()
+      except ValueError:
+          printt("Invalid input! Try Again!", userStrDelay)
+          continue
+
+
 # Disclaimer code
-def readDisclaim():
-  print(
-      f"{fore(1)}Do you want to read the disclaimer before proceeding? (y/n)\n >{style(0)}"
-  )
-  # disclaimerRead = str(fkey.getchars(chars=["y", "n"]))
-  disclaimerRead = "n" # For Testing
-  if disclaimerRead == "y":
-      os.system("clear")
-      disclaimer()
-      mainMenu()
-  else:
-      os.system("clear")
-      mainMenu()
+if engine.story.disclaimer.readDisclaim():
+  engine.story.disclaimer.disclaimer(userStrDelay)
+  mainMenu()
+else:
+  # TODO: Then run main story
+  mainMenu()
+
