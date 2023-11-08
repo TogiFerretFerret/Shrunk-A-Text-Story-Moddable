@@ -11,3 +11,7 @@ class DefaultMod:
   def menuChoice(self,choice):
     """Menu Choice"""
     pass
+  @hookspec
+  def menuError(self):
+    """Menu Error"""
+    pass

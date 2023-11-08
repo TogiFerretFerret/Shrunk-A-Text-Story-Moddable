@@ -71,6 +71,7 @@ def mainMenu():
           elif choice == 2:
               options()
       except ValueError:
+          pm.hook.menuError()
           printt("Invalid input! Try Again!", userStrDelay)
           continue
 

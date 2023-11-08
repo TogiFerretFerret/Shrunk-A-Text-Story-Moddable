@@ -15,6 +15,7 @@ class mod1:
         print('Phew... TYSM')
       elif choice==2:
         print("Phew... I hope")
-      else:
-        printt("???? WTF do you think this will do? The instructions are very clear...")
+    @forge.mod.hookimpl
+    def menuError(self):
+      printt("???? WTF do you think this will do? The instructions are very clear...")
       return
