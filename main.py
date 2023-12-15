@@ -35,7 +35,7 @@ for mod in mods_to_load:
 ##### Typing Simulation variables and others #####
 ##################################################
 creader = engine.fsys.read.FileReader()
-userStrDelay = creader.read("config/userStrDelay.cfgf")
+userStrDelay = float(creader.read("config/userStrDelay.cfgf"))
 # TODO: Make this save to config file
 numDeaths = 0
 bestFriend = ""
