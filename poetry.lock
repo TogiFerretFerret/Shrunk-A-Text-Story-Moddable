@@ -1128,6 +1128,17 @@ files = [
 ]
 
 [[package]]
+name = "upgraded-engineer"
+version = "0.2.1"
+description = "Python \"API\" for interacting with rusty-engine"
+optional = false
+python-versions = "*"
+files = [
+    {file = "upgraded-engineer-0.2.1.tar.gz", hash = "sha256:6696c52951a076c28a13d280e950be3f128ee4901ac8bf11d5280aa6134f5ac7"},
+    {file = "upgraded_engineer-0.2.1-py3-none-any.whl", hash = "sha256:e98fcf314aabb49e01f7296845d59460e1beffc224ce35c0663f620cd727d4ac"},
+]
+
+[[package]]
 name = "urllib3"
 version = "1.26.15"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -1265,4 +1276,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6415e31d5fef6b491e9393faa4b33a768b17d4d65aa4f6626740f38a1a4d67ce"
+content-hash = "df3d44f7158114a8075ca23cf582eae96851157bedb76cf2346f1fb56a81a6b4"

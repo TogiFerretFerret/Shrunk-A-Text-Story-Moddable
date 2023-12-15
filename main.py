@@ -12,13 +12,13 @@ import time
 import engine.story.disclaimer
 from engine.story.typewriter import printt
 import engine.fsys.read
-
+import engine.menus.startMenu
 pm = pluggy.PluginManager("shrunk")
 pm.add_hookspecs(forge.mod.DefaultMod)
 
-###################
-##### Modload #####
-###################
+#####################
+##### Modloader #####
+#####################
 mods_to_load = [] # List of mods to load
 # Get list of mods to load
 for i in os.listdir('mods'):
@@ -45,7 +45,8 @@ username = os.environ["REPL_OWNER"]
 
 def mainMenu():
   global userStrDelay, numDeaths, bestFriend, storyLocation
-  printt(fore(14) + "TG 101 presents...\n\n\n" + style(0), userStrDelay)
+  printt(fore(14) + "TG 101 presents...\n" + style(0), userStrDelay)
+  printt(fore(14) + "Modding Framework by RiverdaleSuperCoder...\n\n\n" + style(0), userStrDelay)
   time.sleep(1)
   # Print Title
   reader = engine.fsys.read.FileReader()
@@ -63,7 +64,7 @@ def mainMenu():
           choice = int(dk.dKey(["1", "2", "3"]))
           pm.hook.menuChoice(choice=choice)
           if choice == 1:
-              subMenu()
+              engine.menus.startMenu.subMenu()
               break
           elif choice == 3:
               printt("Goodbye!", userStrDelay)
