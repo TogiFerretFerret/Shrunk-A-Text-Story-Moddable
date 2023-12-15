@@ -13,6 +13,7 @@ import engine.story.disclaimer
 from engine.story.typewriter import printt
 import engine.fsys.read
 import engine.menus.startMenu
+from engine.utils import clear
 pm = pluggy.PluginManager("shrunk")
 pm.add_hookspecs(forge.mod.DefaultMod)
 
@@ -33,8 +34,9 @@ for mod in mods_to_load:
 ##################################################
 ##### Typing Simulation variables and others #####
 ##################################################
+creader = engine.fsys.read.FileReader()
+userStrDelay = creader.read("config/userStrDelay.cfgf")
 # TODO: Make this save to config file
-userStrDelay = 0.04
 numDeaths = 0
 bestFriend = ""
 # DB Stuff

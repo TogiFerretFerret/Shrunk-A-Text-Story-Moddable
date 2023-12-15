@@ -1,4 +1,5 @@
 from engine.story.typewriter import printt
+from engine.utils import clear
 
 def subMenu():
   os.system("clear")
