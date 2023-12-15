@@ -1,3 +1,5 @@
+from engine.story.typewriter import printt
+
 def subMenu():
   os.system("clear")
   printt("1. New Game", userStrDelay)
